@@ -15,6 +15,7 @@ public class ConnectDB {
 			if (connection == null) {
 				connection = DriverManager.getConnection(jdbcUrl);
 			}
+			System.out.println("Connesso a: "+jdbcUrl);
 			return connection;
 
 		} catch (SQLException e) {
