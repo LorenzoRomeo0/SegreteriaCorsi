@@ -33,7 +33,7 @@
             <TextField fx:id="txtCognome" editable="false" layoutX="395.0" layoutY="81.0" prefHeight="25.0" prefWidth="115.0" promptText="Cognome" />
             <Button fx:id="btnCerca" layoutX="395.0" layoutY="121.0" mnemonicParsing="false" onAction="#cerca" text="Cerca" AnchorPane.bottomAnchor="249.0" />
             <Button fx:id="btnIscrivi" layoutX="463.0" layoutY="121.0" mnemonicParsing="false" onAction="#iscrivi" text="Iscrivi" />
-            <TextArea fx:id="txtResult" layoutX="-1.0" layoutY="164.0" prefHeight="184.0" prefWidth="521.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="164.0" />
+            <TextArea fx:id="txtResult" editable="false" layoutX="-1.0" layoutY="164.0" prefHeight="184.0" prefWidth="521.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="164.0" />
             <Button fx:id="btnReset" layoutX="489.0" layoutY="356.0" mnemonicParsing="false" onAction="#reset" text="Reset" textFill="RED" />
          </children>
       </AnchorPane>

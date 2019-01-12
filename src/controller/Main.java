@@ -20,7 +20,9 @@ public class Main extends Application {
 			/*
 			 * Create and set the model here!
 			 */
-			// controller.setModel();
+			// 
+			model.Model m=new model.Model();
+;			controller.setModel(m);
 
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
