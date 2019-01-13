@@ -3,7 +3,7 @@ package model;
 public class Studente implements java.io.Serializable{
 	@Override
 	public String toString() {
-		return "Studente [matricola=" + matricola + ", cognome=" + cognome + ", nome=" + nome + ", cds=" + cds + "]";
+		return "matricola=" + matricola + ", cognome=" + cognome + ", nome=" + nome + ", cds=" + cds;
 	}
 	private static final long serialVersionUID = 1L;
 	int matricola;

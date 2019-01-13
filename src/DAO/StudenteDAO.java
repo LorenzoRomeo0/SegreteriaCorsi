@@ -59,13 +59,37 @@ public class StudenteDAO {
 		return null;
 	}
 	
-	public List<Studente> getStudentiWithMatricola(List<String> matricola) {
+	public List<Studente> getStudentiWithMatricolaDB(List<String> matricola) {
 		//int matricola1=Integer.parseInt(matricola);
 		List<Studente>st=new ArrayList<Studente>();
-		for(int i=0; i<matricola.size();i++) {
-			
+		for(String m:matricola) {
+			int m1=Integer.parseInt(m);
+			try {
+				Studente studente=new Studente();
+				PreparedStatement sta= ConnectDB.getConnection().prepareStatement("SELECT matricola, cognome, nome, cds WHERE matricola=? LIMIT 1");
+				sta.setInt(1, m1);
+				ResultSet result=sta.executeQuery();
+				studente.setMatricola(m1);
+				studente.setNome(result.getString("nome"));
+				studente.setCognome(result.getString("cognome"));
+				studente.setCds(result.getString("cds"));
+				st.add(studente);
+			} catch (SQLException e) {
+				System.out.println("errore getStudenteWithMatricola");
+				e.printStackTrace();
+			}
 		}
 		return st;
 	}
 	
+	public List<Studente> getStudentiWithMatricola(List<String> matricola) {
+		List<Studente> st=new ArrayList<Studente>();
+		for(String ma:matricola) {
+			for(Studente s: studenti) {
+				if(s.getMatricola()==Integer.parseInt(ma))
+					st.add(s);
+			}
+		}
+		return st;
+	}
 }

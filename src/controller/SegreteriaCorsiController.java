@@ -51,13 +51,20 @@ public class SegreteriaCorsiController {
 
 	    @FXML
 	    void cerca(ActionEvent event) {
-
+	    	if(!comboCorsi.getValue().equals(" "))
+	    		txtResult.setText(model.findStudentiByCorso(comboCorsi.getValue()));
+	    	else
+	    		txtResult.setText(model.findCorsiByCodins(txtCodice.getText()));
+	    	//if(txtResult.getText().isEmpty())
+	    		//txtResult.setText("Errore");
 	    }
 	    
 	    @FXML
 	    void compila(ActionEvent event) {
-	    	txtNome.setText(model.findStudentName(Integer.parseInt(txtCodice.getText())));
-	    	txtCognome.setText(model.findStudentSurname(Integer.parseInt(txtCodice.getText())));
+	    	if(!txtCodice.getText().isEmpty()) {
+		    	txtNome.setText(model.findStudentName(Integer.parseInt(txtCodice.getText())));
+		    	txtCognome.setText(model.findStudentSurname(Integer.parseInt(txtCodice.getText())));
+	    	}
 	    }
 
 	    @FXML
@@ -90,6 +97,12 @@ public class SegreteriaCorsiController {
 	        for(String s:model.getCorsi())
 	        	System.out.println(s);
 	        comboCorsi.getItems().addAll(model.getCorsi());
+
+
+	        comboCorsi.getSelectionModel().selectFirst();
+
+	        
+
 	        txtCodice.textProperty().addListener(new ChangeListener<String>() {
 		        @Override
 		        public void changed(ObservableValue<? extends String> observable, String oldValue, 

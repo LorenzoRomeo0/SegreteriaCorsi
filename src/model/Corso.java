@@ -2,6 +2,12 @@ package model;
 //BEAN CORSO
 
 public class Corso  implements java.io.Serializable{
+	@Override
+	public String toString() {
+		return "codins=" + codins + ", numeroCrediti=" + numeroCrediti + ", nome=" + nome + ", periodoDidattico="
+				+ periodoDidattico;
+	}
+
 	private static final long serialVersionUID = 2L;
 	String codins;
 	int numeroCrediti;

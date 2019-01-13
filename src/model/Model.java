@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import DAO.CorsoDAO;
 import DAO.IscrizioneDAO;
@@ -41,7 +42,25 @@ public class Model {
 	}
 	
 	public String findStudentiByCorso(String nomeCorso) {
-		for(Studente st:s.getStudentiWithMatricola(i.getMatricolaStudentiWithCodins(c.getCorsoByNome(nomeCorso).getCodins())));
+		String result="";
+		Corso corso= c.getCorsoByNome(nomeCorso);
+		if(corso!=null) {
+			List<String> matricole=i.getMatricolaStudentiWithCodins(corso.getCodins());
+			List<Studente> studenti=s.getStudentiWithMatricola(matricole);
+			for(Studente st:studenti)
+				result+=st.toString()+"\n";
+		}
+		return result;
+	}
+	
+	public String findCorsiByCodins(String codins) {
+		String result="";
+		List<Corso> co=c.getCorsiWithCodins(codins);
+		if(co.size()>0) {
+			for(Corso st:co)
+				result+=st.toString()+"\n";
+		}
+		return result;
 	}
 	
 }

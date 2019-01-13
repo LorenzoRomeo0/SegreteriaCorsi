@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Iscrizione;
-import model.Studente;
 
 public class IscrizioneDAO {
 	List<Iscrizione> iscrizioni;
@@ -50,6 +49,15 @@ public class IscrizioneDAO {
 				matricole.add(s.getMatricola());
 			}
 		return matricole;
+	}
+	
+	public List<String> getCodinsWithMatricola(String matricola) {
+		List<String> codins=new ArrayList<String>();
+		for(Iscrizione s:iscrizioni) 
+			if(s.getMatricola()==matricola) {
+				codins.add(s.getMatricola());
+			}
+		return codins;
 	}
 
 }

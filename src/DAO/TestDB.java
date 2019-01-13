@@ -23,7 +23,9 @@ public class TestDB {
 		}
 		System.out.println();*/
 		System.out.println("Classe test");
-		System.out.println(model.findStudentName(148072));
+		//System.out.println(model.findStudentName(148072));
+		//System.out.println(model.findStudentiByCorso("Economia e finanza d'impresa"));
+		System.out.println(model.findCorsiByCodins(codins));
 
 	}
 

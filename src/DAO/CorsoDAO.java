@@ -18,11 +18,8 @@ public class CorsoDAO {
 		
 		corsi=getAllCorsi();
 	}
-	
 	public List<Corso> getCorsi(){
-		
-		return this.corsi;
-		
+		return this.corsi;	
 	}
 	
 	public List<String> getNomeCorsi(){
@@ -101,10 +98,19 @@ public class CorsoDAO {
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
 	 */
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
+	public boolean iscriviStudenteACorso(Studente studente, Corso corso) {
 		// TODO
 		// ritorna true se l'iscrizione e' avvenuta con successo
 		return false;
 	}
 
+	
+	public List<Corso> getCorsiWithCodins(String codins) {
+		List<Corso> st=new ArrayList<Corso>();
+			for(Corso s: corsi) {
+				if(s.getCodins().equals(codins))
+					st.add(s);
+			}
+		return st;
+	}
 }
