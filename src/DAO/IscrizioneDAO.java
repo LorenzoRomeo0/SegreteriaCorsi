@@ -94,10 +94,10 @@ public class IscrizioneDAO {
 					sql.executeUpdate();
 			}else result="Lo studente e' gia' iscritto al corso selezionato, oppure non e' un utente valido.";
 				}else
-					result="Lo studente e' gia' iscritto al corso selezionato, oppure non e' un utente valido.";
+					result="Lo studente e' gia' iscritto al corso selezionato, oppure non e' un utente valido. ";
 		} catch (SQLException e) {
 			result="Errore nell'iscrizione";
-			System.out.println("Errore iscriviStudente");
+			System.out.println("Errore iscriviStudente"); 
 			e.printStackTrace();
 		}
 		return result;
