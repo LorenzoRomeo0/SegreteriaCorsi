@@ -53,7 +53,7 @@ public class Model {
 		return result;
 	}
 	
-	public String findCorsiByCodins(String codins) {
+	/*public String findCorsiByCodins(String codins) {
 		String result="";
 		List<Corso> co=c.getCorsiWithCodins(codins);
 		if(co.size()>0) {
@@ -61,6 +61,22 @@ public class Model {
 				result+=st.toString()+"\n";
 		}
 		return result;
-	}
+	}*/
 	
+	public String findCorsiByMatricola(String matricola) {
+		List<Corso> corso=c.getCorsiWithCodin(i.getCodinsWithMatricola(matricola));
+		String result="";
+		for(Corso c:corso)
+			result+=c.toString()+"\n";
+		return result;
+	}
+
+	public String checkByMatricolaIfInCorso(String matricola, String corso) {
+		String result=(i.checkIscrizioneStudente(matricola, c.getCorsoByNome(corso).getCodins()))?"Lo studente e' iscritto al corso "+ corso+".":"Lo studente non e' iscritto al corso "+corso+"";
+		return result;
+	}
+
+	public String iscriviStudente(String matricola, String corso) {
+		return i.iscriviStudente(s.getStudenteWithMatricola(matricola), c.getCorsoByNome(corso));
+	}
 }

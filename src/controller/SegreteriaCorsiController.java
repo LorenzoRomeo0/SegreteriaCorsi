@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,12 +50,14 @@ public class SegreteriaCorsiController {
 
 	    @FXML
 	    void cerca(ActionEvent event) {
-	    	if(!comboCorsi.getValue().equals(" "))
+	    	if(!comboCorsi.getValue().equals(" ") && txtCodice.getText().isEmpty())
 	    		txtResult.setText(model.findStudentiByCorso(comboCorsi.getValue()));
-	    	else
-	    		txtResult.setText(model.findCorsiByCodins(txtCodice.getText()));
-	    	//if(txtResult.getText().isEmpty())
-	    		//txtResult.setText("Errore");
+	    	else if(!txtCodice.getText().isEmpty() && comboCorsi.getValue().equals(" "))
+	    		txtResult.setText(model.findCorsiByMatricola(txtCodice.getText()));
+	    	else if(!txtCodice.getText().isEmpty() && !comboCorsi.getValue().equals(" "))
+	    		txtResult.setText(model.checkByMatricolaIfInCorso(txtCodice.getText(), comboCorsi.getValue()));
+	    	if(txtResult.getText().isEmpty())
+	    		txtResult.setText("Errore");
 	    }
 	    
 	    @FXML
@@ -69,12 +70,19 @@ public class SegreteriaCorsiController {
 
 	    @FXML
 	    void iscrivi(ActionEvent event) {
-
+	    	if(!txtCodice.getText().isEmpty() && !comboCorsi.getValue().equals(" ")) {
+	    		txtResult.setText(model.iscriviStudente(txtCodice.getText(), comboCorsi.getValue()));
+	    	}else
+	    		txtResult.setText("Per favore compili tutti i campi");
 	    }
 
 	    @FXML
 	    void reset(ActionEvent event) {
-
+	    	txtCodice.clear();
+	    	txtResult.clear();
+	    	comboCorsi.getSelectionModel().selectFirst();
+	    	txtNome.clear();
+	    	txtCognome.clear();
 	    }
 
 	    @FXML

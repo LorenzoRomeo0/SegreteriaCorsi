@@ -11,6 +11,10 @@ public class Iscrizione implements java.io.Serializable{
 	public String getMatricola() {
 		return matricola;
 	}
+	@Override
+	public String toString() {
+		return "matricola=" + matricola + ", codins=" + codins + "]";
+	}
 	public void setMatricola(String matricola) {
 		this.matricola = matricola;
 	}

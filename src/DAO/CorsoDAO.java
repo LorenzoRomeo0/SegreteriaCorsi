@@ -104,13 +104,23 @@ public class CorsoDAO {
 		return false;
 	}
 
-	
-	public List<Corso> getCorsiWithCodins(String codins) {
+	//!!!!! il break è da rivedere
+	public List<Corso> getCorsiWithCodin(List<String> codins) {
+		System.out.println("GetCorsiWithCodin");
 		List<Corso> st=new ArrayList<Corso>();
-			for(Corso s: corsi) {
-				if(s.getCodins().equals(codins))
-					st.add(s);
-			}
+			for(String codin:codins)
+				for(Corso co:corsi) {
+					System.out.println(corsi.size());
+					if(co.getCodins().equals(codin)) {
+						System.out.println("uno");
+						st.add(co);
+						break;
+					}
+				}
 		return st;
 	}
+	
+	
+	
+
 }
